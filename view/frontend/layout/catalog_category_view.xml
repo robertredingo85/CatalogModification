@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="RedInGo_CategoryModification::css/categorymodification.css"/>
+    </head>
+    <body>
+        <referenceContainer name="head.components">
+            <block class="Magento\Framework\View\Element\Template" name="head.components.categorymodification" template="RedInGo_CategoryModification::js.phtml" />
+        </referenceContainer>
+        <referenceBlock name="page.main.title" template="RedInGo_CategoryModification::html/title.phtml" />
+    </body>
+</page>

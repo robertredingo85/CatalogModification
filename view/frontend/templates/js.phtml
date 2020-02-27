@@ -1,0 +1,99 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block Magento\Framework\View\Element\Template
+ */
+?>
+<?php
+/** @var \Mageside\CategoryModification\Helper\Config $helper */
+$helper = $this->helper('RedInGo\CategoryModification\Helper\Config');
+if ($helper->getConfigModule('enabled')) :
+    if ($_categoryBlock = $block->getLayout()->getBlock('category.products')) :
+        if (!$_category = $_categoryBlock->getCurrentCategory()) {
+            return;
+        };
+        if($_category->getData('category_modification_enabled')) :
+        if (!$_pixels = $_category->getData('category_modification_height')) {
+            $_pixels = $helper->getConfigModule('category_modification_height');
+        }
+        if (!$_showText = $_category->getData('category_modification_show_text')) {
+            $_showText = $helper->getConfigModule('category_modification_show_text');
+        }
+        if (!$_hideText = $_category->getData('category_modification_hide_text')) {
+            $_hideText = $helper->getConfigModule('category_modification_hide_text');
+        }
+        $_class = $helper->getConfigModule('category_modification_class');
+    ?>
+    <script type="text/javascript">
+        require([
+            "jquery"
+        ], function($) {
+    //<![CDATA[
+            $(document).ready(function() {
+                $('.<?php echo $_class ?>').each(function(){
+                    var $el = $(this);
+                    if ($el.height() < <?php echo $_pixels ?>) {
+                        return;
+                    }
+                    function fadeOut($elem) {
+                        $elem.css({
+                            position: 'relative',
+                            height: '<?php echo $_pixels ?>px',
+                            overflow: 'hidden',
+                            marginBottom: '20px'
+                        });
+                    }
+                    function fadeIn($elem) {
+                        $elem.css({
+                            position: 'relative',
+                            height: 'auto',
+                            overflow: 'hidden',
+                            marginBottom: '20px'
+                        });
+                    }
+
+                    fadeOut($el);
+
+                    var $bottomGradient = $('<div></div>').addClass('descr-bottom-gradient');
+                    $bottomGradient.insertAfter($el);
+
+                    var $showButton = $('<a class="action primary"></a>').attr({ href: 'javascript:void(0);' })
+                        .html('<?php echo $_showText ?><i class="fa fa-chevron-down" aria-hidden="true"></i>');
+                    var $showButtonDiv = $('<div></div>').addClass('descr-show-button');
+                    $showButtonDiv.append($showButton);
+                    $showButtonDiv.insertAfter($bottomGradient);
+
+                    var $hideButton = $('<a class="action primary"></a>').attr({ href: 'javascript:void(0);' })
+                        .html('<?php echo $_hideText ?><i class="fa fa-chevron-up" aria-hidden="true"></i>');
+                    var $hideButtonDiv = $('<div></div>').addClass('descr-hide-button');
+                    $hideButtonDiv.append($hideButton);
+                    $hideButtonDiv.insertAfter($showButtonDiv);
+
+                    $hideButtonDiv.hide();
+
+                    $showButton.on('click', function() {
+                        $showButtonDiv.hide();
+                        $hideButtonDiv.show();
+                        $bottomGradient.hide();
+                        fadeIn($el);
+                    });
+
+                    $hideButton.on('click', function() {
+                        $hideButtonDiv.hide();
+                        $showButtonDiv.show();
+                        $bottomGradient.show();
+                        fadeOut($el);
+                    });
+                });
+            });
+    //]]>
+        });
+    </script>
+    <?php
+    endif;
+    ?>
+    <?php
+    endif;
+    ?>
+<?php endif; ?>

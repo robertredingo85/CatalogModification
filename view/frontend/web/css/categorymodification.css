@@ -1,0 +1,52 @@
+
+.category-description {
+    margin-bottom:
+}
+
+.descr-bottom-gradient {
+    z-index: 2;
+    position: relative;
+    height: 50px;
+    margin-top: -50px;
+    overflow: hidden;
+    background: -moz-linear-gradient( bottom, rgb(255, 255, 255) 15%, rgba(255, 255, 255, 0) 100% );
+    background: -webkit-gradient( linear, bottom, top, color-stop(15%, rgb(255, 255, 255)), color-stop(100%, rgba(255, 255, 255, 0)) );
+    background: -webkit-linear-gradient( bottom, rgb(255,255,255) 15%, rgba(255, 255, 255, 0) 100% );
+    background: -o-linear-gradient( bottom, rgb(255,255,255) 15%, rgba(255, 255, 255, 0) 100% );
+    background: -ms-linear-gradient( bottom, rgb(255,255,255) 15%, rgba(255, 255, 255, 0) 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03ffffff', endColorstr='#ffffff', GradientType=0 );
+    background: linear-gradient( bottom, rgb(255, 255, 255) 15%, rgba(255, 255, 255, 0) 100% );
+}
+
+.descr-show-button,
+.descr-hide-button {
+    z-index: 3;
+    position: relative;
+    height: 19px;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    right: 0px;
+    top: 0px;
+    margin: 0px;
+}
+.descr-show-button a,
+.descr-hide-button a {
+    padding: 9px 10px !important;
+}
+.descr-show-button a i,
+.descr-hide-button a i {
+    font-size: 13px;
+    margin-left: 11px;
+    position: relative;
+    top: -1px;
+}
+
+@media screen and (max-width: 767px) {
+    .descr-show-button,
+    .descr-hide-button {
+        height: auto;
+        margin-bottom: 15px;
+        position: relative;
+    }
+}

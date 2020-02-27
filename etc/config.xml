@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mageside_categorymodification>
+            <general>
+                <enabled>1</enabled>
+                <category_modification_height>100</category_modification_height>
+                <category_modification_show_text>Pokaż więcej</category_modification_show_text>
+                <category_modification_hide_text>Pokaż mniej</category_modification_hide_text>
+                <category_modification_class>category-description</category_modification_class>
+                <module_name>Category Modification</module_name>
+            </general>
+        </mageside_categorymodification>
+    </default>
+</config>
